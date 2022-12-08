@@ -405,7 +405,7 @@ function cronJobs() {
         //let emailAddress = jiraRecords[i].fields.assignee.emailAddress;
         let emailAddress = "shakun.arora@rstartec.com";
 
-        let jiraProjName = jiraRecords[i].fields.project.name;
+        let jiraProjName = jiraRecords[i].fields.project.name.trim();
 
         //  let jiraProjName = "Testing pro";
 
