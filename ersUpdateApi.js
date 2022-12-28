@@ -8,7 +8,7 @@ const makeOptionsforJiraProjectRecords = (start, maxResults = 50) => {
   // let currentDate = utils.formatDate(new Date());
   // let oldDate = utils.subtractMonths(5);
 
-  let oldDate = utils.subtractDays(2);
+  let oldDate = utils.subtractDays(5);
 
   return {
     method: "POST",
