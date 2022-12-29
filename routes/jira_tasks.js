@@ -19,9 +19,11 @@ router.post(enumUrl.API_URL.CREATE_USER, async (req, res) => {
   res.send({ "status": "200", data: result });
 });
 
+//creating Jira task & project in Ers
 const initiateJiraScheduler = async () => {
   await coneJob.fetchJiraProjectRecords();
 };
+//creating Employee From PeopleHr to Ers
 const initiatePeopleHrScheduler = async () => {
   await peopleAppsScheduler.peopleHrErsScheduler();
 };
