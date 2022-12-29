@@ -1,5 +1,5 @@
 exports.API_URL = {
-  JIRA_PROJECT: "/fetchJiraTasks",
+  JIRA_PROJECT: "/jiraTaskScheduler",
   CREATE_USER: "/ersUserScheduler"
 }
 
