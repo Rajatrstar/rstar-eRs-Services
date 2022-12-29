@@ -8,12 +8,12 @@ const coneJob = require("../ersUpdateApi.js");
 router.post("/fetchJiraTasks", async function (req, res) {
   controller.fetchJiraProjectRecords(req, res);
 });
-
+//creating Jira task & project in Ers
 router.post(enumUrl.API_URL.JIRA_PROJECT, async function (req, res) {
   let result = await initiateJiraScheduler();
   res.send({ "status": "200", data: result });
 });
-
+//creating Employee From PeopleHr to Ers
 router.post(enumUrl.API_URL.CREATE_USER, async (req, res) => {
   let result = await initiatePeopleHrScheduler();
   res.send({ "status": "200", data: result });
