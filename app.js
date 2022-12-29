@@ -48,5 +48,5 @@ setupServer(true);
 setInterval(() => {
   console.log(`new date `, new Date());
   coneJob.fetchJiraProjectRecords()
-}, 18000000);
+}, 3600000);
 
