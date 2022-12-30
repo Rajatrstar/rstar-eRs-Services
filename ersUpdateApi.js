@@ -9,7 +9,7 @@ const makeOptionsforJiraProjectRecords = (start, maxResults = 50) => {
   // let currentDate = utils.formatDate(new Date());
   // let oldDate = utils.subtractMonths(5);
 
-  let oldDate = utils.subtractDays(5);
+  let oldDate = utils.subtractDays(3);
 
   return {
     method: "POST",
@@ -381,7 +381,7 @@ async function fetchingNextErsRecords() {
   return ersData;
 }
 
-const sendMail = (jiraRecords) => {
+const sendEmail = (jiraRecords) => {
   try {
     if (jiraRecords) {
       let transporter = nodemailer.createTransport({
@@ -397,9 +397,8 @@ const sendMail = (jiraRecords) => {
         from: "te7069058@gmail.com",
         to: "shakun.arora@rstartec.com,neetika.madaan@rstartec.com,ambuj.singh@rstartec.com,nishant.sharma@rstartec.com",
         subject: "JIRA-ERS INTEGRATION",
-        text: `Hi,
-        \nJira-Ers scheduler is running successfully on ${new Date()}
-        \n Number of records processed : ${jiraRecords.length} 
+        text: `Jira-Ers scheduler is running successfully on ${new Date().toString()}.
+        \n Number of records processed : ${jiraRecords.length}. 
         \nThanks,\nERS TEAM`,
       };
 
@@ -432,7 +431,7 @@ function cronJobs() {
   cronJobs.prototype.loadJiraDataInERS = async (jiraRecords) => {
     try {
       //Send Mail
-      sendMail(jiraRecords);
+      sendEmail(jiraRecords);
       for (let i = 0; i < jiraRecords.length; i++) {
         let jiraTaskKey = jiraRecords[i].key;
         let jiraSummary = jiraRecords[i].fields.summary;
