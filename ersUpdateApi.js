@@ -6,11 +6,7 @@ const nodemailer = require("nodemailer");
 
 //Declaring body and header for Jira Project Records
 const makeOptionsforJiraProjectRecords = (start, maxResults = 50) => {
-  // let currentDate = utils.formatDate(new Date());
-  // let oldDate = utils.subtractMonths(5);
-
-  let oldDate = utils.subtractDays(3);
-
+  let oldDate = utils.subtractDays(2);
   return {
     method: "POST",
     url: "https://ers-dev.azurewebsites.net/api/fetchJiraTasks",
