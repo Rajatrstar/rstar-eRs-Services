@@ -2,6 +2,7 @@ const request = require("request");
 const requestPromise = require("request-promise");
 const utils = require("./lib/utils");
 const config = require("./enum/enum.js");
+const nodemailer = require("nodemailer");
 
 //Declaring body and header for Jira Project Records
 const makeOptionsforJiraProjectRecords = (start, maxResults = 50) => {
@@ -380,6 +381,42 @@ async function fetchingNextErsRecords() {
   return ersData;
 }
 
+const sendMail = (jiraRecords) => {
+  try {
+    if (jiraRecords) {
+      let transporter = nodemailer.createTransport({
+        host: "smtp.gmail.com",
+        secureConnection: false,
+        port: 587,
+        auth: {
+          user: "te7069058@gmail.com",
+          pass: `jmfqryjcxergusgc`,
+        },
+      });
+      let mailOptions = {
+        from: "te7069058@gmail.com",
+        to: "shakun.arora@rstartec.com,neetika.madaan@rstartec.com,ambuj.singh@rstartec.com,nishant.sharma@rstartec.com",
+        subject: "JIRA-ERS INTEGRATION",
+        text: `Hi,
+        \nJira-Ers scheduler is running successfully on ${new Date()}
+        \n Number of records processed : ${jiraRecords.length} 
+        \nThanks,\nERS TEAM`,
+      };
+
+      transporter.sendMail(mailOptions, function (error, info) {
+        if (error) {
+          console.log(error);
+          throw err;
+        } else {
+          console.log("Email sent: " + info.response);
+        }
+      });
+    }
+  } catch (err) {
+    throw error;
+  }
+};
+
 function cronJobs() {
   cronJobs.prototype.fetchJiraProjectRecords = async () => {
     if (await fetchingInitialMaxResultsofErs()) {
@@ -393,8 +430,9 @@ function cronJobs() {
   };
 
   cronJobs.prototype.loadJiraDataInERS = async (jiraRecords) => {
-    console.log(jiraRecords.length);
     try {
+      //Send Mail
+      sendMail(jiraRecords);
       for (let i = 0; i < jiraRecords.length; i++) {
         let jiraTaskKey = jiraRecords[i].key;
         let jiraSummary = jiraRecords[i].fields.summary;
@@ -592,5 +630,6 @@ function cronJobs() {
     });
   };
 }
+
 
 module.exports = new cronJobs();
