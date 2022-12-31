@@ -6,7 +6,7 @@ const nodemailer = require("nodemailer");
 
 //Declaring body and header for Jira Project Records
 const makeOptionsforJiraProjectRecords = (start, maxResults = 50) => {
-  let oldDate = utils.subtractDays(2);
+  let oldDate = utils.subtractDays(1);
   return {
     method: "POST",
     url: "https://ers-dev.azurewebsites.net/api/fetchJiraTasks",
@@ -385,12 +385,12 @@ const sendEmail = (jiraRecords) => {
         secureConnection: false,
         port: 587,
         auth: {
-          user: "te7069058@gmail.com",
-          pass: `jmfqryjcxergusgc`,
+          user: "deskitsservice@gmail.com",
+          pass: `sasqypwqffadxbwk`,
         },
       });
       let mailOptions = {
-        from: "te7069058@gmail.com",
+        from: "deskitsservice@gmail.com",
         to: "shakun.arora@rstartec.com,neetika.madaan@rstartec.com,ambuj.singh@rstartec.com,nishant.sharma@rstartec.com",
         subject: "JIRA-ERS INTEGRATION",
         text: `Jira-Ers scheduler is running successfully on ${new Date().toString()}.
