@@ -72,13 +72,13 @@ function peopleApps() {
   peopleApps.prototype.peopleHrErsScheduler = async () => {
     let peopleHREmpsData = await this.fetchPeopleHrEmpsData();
     let ersEmpsData = await this.fetchErsEmpsData();
-    sendEmail();
+    sendEmailNotification();
     if (peopleHREmpsData.length > 0) {
       this.loadPeopleHrDataInErs(peopleHREmpsData, ersEmpsData);
     }
   };
 
-  const sendEmail = () => {
+  const sendEmailNotification = () => {
     try {
       let transporter = nodemailer.createTransport({
         host: enumVal.EMAIL.HOST,
