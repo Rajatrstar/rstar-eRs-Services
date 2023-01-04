@@ -92,8 +92,8 @@ function peopleApps() {
       let mailOptions = {
         from: enumVal.EMAIL_ID.SENDER_EMAIL_ID,
         to: enumVal.EMAIL_ID.RECEIVER_EMAIL_ID,
-        subject: "ERS-PEOPLE-HR INTEGRATION",
-        text: `Ers-PeopleHr scheduler is running successfully on ${new Date().toString()}. 
+        subject: "PEOPLE-HR EMPLOYEE INTEGRATION",
+        text: `PeopleHr Employee scheduler is running successfully on ${new Date().toString()}. 
           \nThanks,\nERS TEAM`,
       };
       transporter.sendMail(mailOptions, function (error, info) {
