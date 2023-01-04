@@ -96,9 +96,11 @@ exports.projectLeads = [
   },
 ];
 //email ids
-exports.EMAIL_ID = {
+exports.EMAIL = {
   SENDER_EMAIL_ID: "deskitsservice@gmail.com",
   RECEIVER_EMAIL_ID: "manvinder.chandhok@rstartec.com,shakun.arora@rstartec.com,neetika.madaan@rstartec.com,ambuj.singh@rstartec.com,nishant.sharma@rstartec.com",
+  HOST: "smtp.gmail.com",
+  AUTH_PASSWORD: "sasqypwqffadxbwk"
 }
 
 //-----------------------------Configuration required for fetching People HR records---------------------------------

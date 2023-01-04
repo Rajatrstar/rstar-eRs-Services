@@ -3,6 +3,7 @@ const requestPromise = require("request-promise");
 const utils = require("./lib/utils");
 const config = require("./enum/enum.js");
 const nodemailer = require("nodemailer");
+const enumVal = require('./enum/enum');
 
 //Declaring body and header for Jira Project Records
 const makeOptionsforJiraProjectRecords = (start, maxResults = 50) => {
@@ -381,17 +382,17 @@ const sendEmail = (jiraRecords) => {
   try {
     if (jiraRecords) {
       let transporter = nodemailer.createTransport({
-        host: "smtp.gmail.com",
+        host: enumVal.EMAIL.HOST,
         secureConnection: false,
         port: 587,
         auth: {
-          user: "deskitsservice@gmail.com",
-          pass: `sasqypwqffadxbwk`,
+          user: enumVal.EMAIL.SENDER_EMAIL_ID,
+          pass: enumVal.EMAIL.AUTH_PASSWORD,
         },
       });
       let mailOptions = {
-        from: enumVal.EMAIL_ID.SENDER_EMAIL_ID,
-        to: enumVal.EMAIL_ID.RECEIVER_EMAIL_ID,
+        from: enumVal.EMAIL.SENDER_EMAIL_ID,
+        to: enumVal.EMAIL.RECEIVER_EMAIL_ID,
         subject: "JIRA-ERS INTEGRATION",
         text: `Jira-Ers scheduler is running successfully on ${new Date().toString()}.
         \n Number of records processed : ${jiraRecords.length}. 

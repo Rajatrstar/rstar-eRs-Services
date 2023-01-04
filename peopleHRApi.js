@@ -81,17 +81,17 @@ function peopleApps() {
   const sendEmail = () => {
     try {
       let transporter = nodemailer.createTransport({
-        host: "smtp.gmail.com",
+        host: enumVal.EMAIL.HOST,
         secureConnection: false,
         port: 587,
         auth: {
-          user: "deskitsservice@gmail.com",
-          pass: `sasqypwqffadxbwk`,
+          user: enumVal.EMAIL.SENDER_EMAIL_ID,
+          pass: enumVal.EMAIL.AUTH_PASSWORD,
         },
       });
       let mailOptions = {
-        from: enumVal.EMAIL_ID.SENDER_EMAIL_ID,
-        to: enumVal.EMAIL_ID.RECEIVER_EMAIL_ID,
+        from: enumVal.EMAIL.SENDER_EMAIL_ID,
+        to: enumVal.EMAIL.RECEIVER_EMAIL_ID,
         subject: "PEOPLE-HR EMPLOYEE INTEGRATION",
         text: `PeopleHr Employee scheduler is running successfully on ${new Date().toString()}. 
           \nThanks,\nERS TEAM`,
