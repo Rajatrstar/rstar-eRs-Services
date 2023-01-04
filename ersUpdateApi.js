@@ -390,8 +390,8 @@ const sendEmail = (jiraRecords) => {
         },
       });
       let mailOptions = {
-        from: "deskitsservice@gmail.com",
-        to: "manvinder.chandhok@rstartec.com,shakun.arora@rstartec.com,neetika.madaan@rstartec.com,ambuj.singh@rstartec.com,nishant.sharma@rstartec.com",
+        from: enumVal.EMAIL_ID.SENDER_EMAIL_ID,
+        to: enumVal.EMAIL_ID.RECEIVER_EMAIL_ID,
         subject: "JIRA-ERS INTEGRATION",
         text: `Jira-Ers scheduler is running successfully on ${new Date().toString()}.
         \n Number of records processed : ${jiraRecords.length}. 

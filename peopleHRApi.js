@@ -1,7 +1,8 @@
 const config = require("./enum/enum.js");
 const services = require("./services/peopleServices.js");
 const request = require("request");
-const enumVal = require('./enum/enum')
+const enumVal = require('./enum/enum');
+const nodemailer = require("nodemailer");
 
 const makeReqForFetchingPeopleHrEmpsData = () => {
   const { postPayloadOfPeopleHR } = config;
@@ -50,7 +51,7 @@ const makeOptionsForCreatingEmpInErs = (empDetails) => {
     start_date: empDate,
     email: `${empDetails["First Name"].toLowerCase()}.${empDetails["Last Name"].toLowerCase()}${enumVal.CONSTANT_VALUES.EMAIL}`,
     resource_type_id: 1,
-    udf_emp_id:empDetails["Employee Id"]
+    udf_emp_id: empDetails["Employee Id"]
   };
 
   return {
@@ -71,8 +72,41 @@ function peopleApps() {
   peopleApps.prototype.peopleHrErsScheduler = async () => {
     let peopleHREmpsData = await this.fetchPeopleHrEmpsData();
     let ersEmpsData = await this.fetchErsEmpsData();
+    sendEmail();
     if (peopleHREmpsData.length > 0) {
       this.loadPeopleHrDataInErs(peopleHREmpsData, ersEmpsData);
+    }
+  };
+
+  const sendEmail = () => {
+    try {
+      let transporter = nodemailer.createTransport({
+        host: "smtp.gmail.com",
+        secureConnection: false,
+        port: 587,
+        auth: {
+          user: "deskitsservice@gmail.com",
+          pass: `sasqypwqffadxbwk`,
+        },
+      });
+      let mailOptions = {
+        from: enumVal.EMAIL_ID.SENDER_EMAIL_ID,
+        to: enumVal.EMAIL_ID.RECEIVER_EMAIL_ID,
+        subject: "ERS-PEOPLE-HR INTEGRATION",
+        text: `Ers-PeopleHr scheduler is running successfully on ${new Date().toString()}. 
+          \nThanks,\nERS TEAM`,
+      };
+      transporter.sendMail(mailOptions, function (error, info) {
+        if (error) {
+          console.log(error);
+          throw err;
+        } else {
+          console.log("Email sent: " + info.response);
+        }
+      });
+
+    } catch (err) {
+      throw error;
     }
   };
 

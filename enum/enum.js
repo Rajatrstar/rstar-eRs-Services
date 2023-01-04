@@ -95,19 +95,11 @@ exports.projectLeads = [
     id: 11725,
   },
 ];
-
-
-
-
-
-
-
-
-
-
-
-
-
+//email ids
+exports.EMAIL_ID = {
+  SENDER_EMAIL_ID: "deskitsservice@gmail.com",
+  RECEIVER_EMAIL_ID: "manvinder.chandhok@rstartec.com,shakun.arora@rstartec.com,neetika.madaan@rstartec.com,ambuj.singh@rstartec.com,nishant.sharma@rstartec.com",
+}
 
 //-----------------------------Configuration required for fetching People HR records---------------------------------
 exports.postPayloadOfPeopleHR = {
