@@ -1,7 +1,7 @@
 exports.API_URL = {
   JIRA_PROJECT: "/jiraTaskScheduler",
-  CREATE_USER: "/ersUserScheduler"
-}
+  CREATE_USER: "/ersUserScheduler",
+};
 
 //-----------------------------Configuration Required for Fetching Jira Records---------------------------------
 exports.fetchingJiraRecords = {
@@ -30,9 +30,7 @@ exports.creatingERSProject = {
 exports.creatingERSProjectsTask = {
   contentType: "application/json",
   Authorization: "Bearer e0e1nhh5horvcvdkpss9hif89yu3d5",
-
   url: "https://app.eresourcescheduler.cloud/rest/v1/projects/?project_id/tasks",
-
   method: "POST",
 };
 
@@ -98,10 +96,11 @@ exports.projectLeads = [
 //email ids
 exports.EMAIL = {
   SENDER_EMAIL_ID: "deskitsservice@gmail.com",
-  RECEIVER_EMAIL_ID: "manvinder.chandhok@rstartec.com,shakun.arora@rstartec.com,neetika.madaan@rstartec.com,ambuj.singh@rstartec.com,nishant.sharma@rstartec.com",
+  RECEIVER_EMAIL_ID:
+    "manvinder.chandhok@rstartec.com,shakun.arora@rstartec.com,neetika.madaan@rstartec.com,ambuj.singh@rstartec.com,nishant.sharma@rstartec.com",
   HOST: "smtp.gmail.com",
-  AUTH_PASSWORD: "sasqypwqffadxbwk"
-}
+  AUTH_PASSWORD: "sasqypwqffadxbwk",
+};
 
 //-----------------------------Configuration required for fetching People HR records---------------------------------
 exports.postPayloadOfPeopleHR = {
@@ -134,4 +133,28 @@ exports.postPayloadOfErsRecords = {
 
 exports.CONSTANT_VALUES = {
   EMAIL: "@rstartec.com",
-}
+  sofbangEmail: "@sofbang.com",
+};
+
+//-----------------------------Configuration required for fetching People Hr Leaves data---------------------------------
+exports.postPayloadOfPeopleHrLeavesData = {
+  queryName: "fetchEmployeeLeaves",
+};
+
+//-----------------------------Configuration required for finding Resource Id (EmployeeId) in ERS ---------------------------------
+exports.postPayloadOfFindingResourceId = {
+  url: "https://app.eresourcescheduler.cloud/rest/v1/resources/search",
+  method: "POST",
+  contentType: "application/json",
+  authorization: "Bearer e0e1nhh5horvcvdkpss9hif89yu3d5",
+};
+
+//-----------------------------Configuration required for finding Resource Data in ERS ---------------------------------
+exports.postPayloadOfFindingResourcesData = {
+  url: "https://app.eresourcescheduler.cloud/rest/v1/resources/search?limit=?total_limit",
+};
+
+//-----------------------------Configuration required for Integrating Leaves with the ERS ---------------------------------
+exports.postPayloadOfintegratingLeaveWithERS = {
+  url: "https://app.eresourcescheduler.cloud/rest/v1/resources/?resource_id/exceptions",
+};
